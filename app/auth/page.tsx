@@ -2,17 +2,53 @@
 
 import { useCallback, useState } from "react";
 import Input from "../components/input";
+import axios from "axios";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 export default function Auth() {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [variant, setVariant] = useState("login");
 
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) => (currentVariant === "login" ? "register" : "login"));
   }, []);
+
+  const login = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+        // redirect: false,
+        callbackUrl: "/profiles",
+      });
+
+      // router.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  }, [email, password, router]);
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/register", {
+        username,
+        email,
+        password,
+      });
+
+      login();
+    } catch (error) {
+      console.error(error);
+    }
+  }, [email, username, password, login]);
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -53,9 +89,32 @@ export default function Auth() {
               />
             </div>
 
-            <button className="w-full py-3 mt-10 text-white transition bg-red-700 rounded-md hover:bg-red-800">
-              {variant === "register" ? "Sign in" : "Register"}
+            <button
+              onClick={variant === "login" ? login : register}
+              className="w-full py-3 mt-10 text-white transition bg-red-700 rounded-md hover:bg-red-800"
+            >
+              {variant === "login" ? "Sign in" : "Register"}
             </button>
+
+            <div className="flex flex-row items-center justify-center gap-4 mt-8">
+              <div
+                onClick={() => {
+                  signIn("google", { callbackUrl: "/" });
+                }}
+                className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full cursor-pointer hover:opacity-80"
+              >
+                <FcGoogle size={30} />
+              </div>
+
+              <div
+                onClick={() => {
+                  signIn("github", { callbackUrl: "/" });
+                }}
+                className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full cursor-pointer hover:opacity-80"
+              >
+                <FaGithub size={30} />
+              </div>
+            </div>
 
             {variant === "login" ? (
               <p onClick={toggleVariant} className="mt-12 text-neutral-500">
