@@ -4,13 +4,13 @@ import { useCallback, useState } from "react";
 import Input from "../components/input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 export default function Auth() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ export default function Auth() {
     } catch (error) {
       console.error(error);
     }
-  }, [email, password, router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     try {
@@ -99,7 +99,7 @@ export default function Auth() {
             <div className="flex flex-row items-center justify-center gap-4 mt-8">
               <div
                 onClick={() => {
-                  signIn("google", { callbackUrl: "/" });
+                  signIn("google", { callbackUrl: "/profiles" });
                 }}
                 className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full cursor-pointer hover:opacity-80"
               >
@@ -108,7 +108,7 @@ export default function Auth() {
 
               <div
                 onClick={() => {
-                  signIn("github", { callbackUrl: "/" });
+                  signIn("github", { callbackUrl: "/profiles" });
                 }}
                 className="flex items-center justify-center w-10 h-10 transition bg-white rounded-full cursor-pointer hover:opacity-80"
               >
