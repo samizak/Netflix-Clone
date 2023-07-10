@@ -9,8 +9,8 @@ export async function GET(request: Request) {
     if (!session) return NextResponse.json({ message: "You are not logged in." }, { status: 401 });
 
     const movieId = new URL(request.url).pathname.split("/").at(-1);
-    if (typeof movieId !== "string") return NextResponse.json({ message: "'Invalid ID" }, { status: 404 });
-    if (!movieId) return NextResponse.json({ message: "'Missing ID" }, { status: 404 });
+    if (typeof movieId !== "string") return NextResponse.json({ message: "Invalid ID" }, { status: 404 });
+    if (!movieId) return NextResponse.json({ message: "Missing ID" }, { status: 404 });
 
     const movies = await prismadb.movie.findUnique({
       where: {
