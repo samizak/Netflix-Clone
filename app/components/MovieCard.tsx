@@ -23,6 +23,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         onClick={redirectToWatch}
         src={data.thumbnailUrl}
         alt="Movie"
+        width="1000"
+        height="1000"
+        quality={100}
         draggable={false}
         className="cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 w-full h-[12vw] delay-300"
       />
@@ -31,6 +34,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         <Image
           onClick={redirectToWatch}
           src={data.thumbnailUrl}
+          width="1000"
+          height="1000"
+          quality={100}
           alt="Movie"
           draggable={false}
           className="cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]"

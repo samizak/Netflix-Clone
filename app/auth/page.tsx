@@ -56,7 +56,7 @@ export default function Auth() {
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="w-full h-full bg-black md:bg-opacity-50">
         <nav className="px-12 py-5">
-          <Image src="./images/logo.png" alt="logo" className="h-12" />
+          <Image src="/images/logo.png" alt="logo" className="h-12" width="100" height="100" />
         </nav>
 
         <div className="flex justify-center">

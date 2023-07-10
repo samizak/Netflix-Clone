@@ -25,7 +25,7 @@ export default function Profiles() {
           <div onClick={() => router.push("/")}>
             <div className="flex-row mx-auto group w-44">
               <div className="flex items-center justify-center overflow-hidden border-transparent rounded-md w-44 h-44 borer-2 group-hover:cursor-pointer group-hover:border-white">
-                <Image src="./images/default-blue.png" alt="Profile" />
+                <Image src="/images/default-blue.png" alt="Profile" width="100" height="100" />
               </div>
 
               <div className="mt-4 text-2xl text-center text-gray-400 group-hover:text-white">
