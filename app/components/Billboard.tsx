@@ -34,7 +34,7 @@ const Billboard: React.FC = () => {
           <PlayButton movieId={data?.id} />
           <button
             onClick={handleOpenModal}
-            className="flex flex-row items-center w-auto px-2 py-1 text-xs font-semibold text-white transition bg-white rounded-md bg-opacity-30 md:py-2 md:px-4 lg:text-lg hover:bg-opacity-20"
+            className="flex flex-row items-center w-auto px-2 py-2 text-xs font-semibold text-white transition bg-white rounded-md bg-opacity-30 md:py-2 md:px-4 lg:text-lg hover:bg-opacity-20"
           >
             <AiOutlineInfoCircle className="w-4 h-4 mr-1 md:mr-3 md:w-8 md:h-8" />
             More Info
