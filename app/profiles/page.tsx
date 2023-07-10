@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React, { useReducer } from "react";
+import React from "react";
 import Image from "next/image";
 
 export default function Profiles() {

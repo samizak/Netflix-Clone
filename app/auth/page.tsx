@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import Input from "../components/input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -12,42 +12,54 @@ import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
 export default function Auth() {
-  // const router = useRouter();
+  const router = useRouter();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [variant, setVariant] = useState("login");
 
+  const [isError, setIsError] = useState(false);
+
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) => (currentVariant === "login" ? "register" : "login"));
+    setIsError(false); // Reset errors
   }, []);
 
   const login = useCallback(async () => {
     try {
-      await signIn("credentials", {
+      const { error }: any = await signIn("credentials", {
         email,
         password,
-        // redirect: false,
-        callbackUrl: "/profiles",
+        redirect: false,
       });
 
-      // router.push("/");
+      if (error) {
+        return setIsError(true);
+      }
+
+      return router.push("/profiles");
     } catch (error) {
+      setIsError(true);
       console.error(error);
     }
   }, [email, password]);
 
   const register = useCallback(async () => {
     try {
-      await axios.post("/api/register", {
+      const { error }: any = await axios.post("/api/register", {
         username,
         email,
         password,
       });
 
+      if (error) {
+        return setIsError(true);
+      }
+
       login();
     } catch (error) {
+      setIsError(true);
       console.error(error);
     }
   }, [email, username, password, login]);
@@ -56,12 +68,33 @@ export default function Auth() {
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="w-full h-full bg-black md:bg-opacity-50">
         <nav className="px-12 py-5">
-          <Image src="/images/logo.png" alt="logo" className="w-auto h-12" width="0" height="0" />
+          <Image src="/images/logo.png" alt="logo" className="w-auto h-12" width="100" height="100" />
         </nav>
 
         <div className="flex justify-center">
           <div className="self-center w-full px-16 py-16 mt-2 bg-black rounded-md bg-opacity-70 lg:w-2/5 md:max-w-md">
             <h2 className="mb-8 text-4xl font-semibold text-white">{variant === "login" ? "Sign In" : "Register"}</h2>
+
+            {variant === "login" && isError && (
+              <div className="px-4 py-3 mb-4 text-sm text-white rounded-md bg-amber-600">
+                Sorry, we can't find an account with this email address. Please try again or{" "}
+                <span
+                  className="underline cursor-pointer"
+                  onClick={() => {
+                    setVariant("register");
+                    setIsError(false); // Reset errors
+                  }}
+                >
+                  create a new account
+                </span>
+              </div>
+            )}
+
+            {variant === "register" && isError && (
+              <div className="px-4 py-3 mb-4 text-sm text-white rounded-md bg-amber-600">
+                The Email is already taken.
+              </div>
+            )}
 
             <div className="flex flex-col gap-4">
               {variant === "register" && (

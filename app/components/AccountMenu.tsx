@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import useCurrentUser from "@/hooks/useCurrentUser";
 
 interface AccountMenuProps {
@@ -26,7 +25,10 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
 
         <hr className="h-px my-4 bg-gray-600 border-0"></hr>
 
-        <div onClick={() => signOut()} className="px-3 text-sm text-center text-white hover:underline">
+        <div
+          onClick={() => signOut({ callbackUrl: "http://localhost:3000/auth" })}
+          className="px-3 text-sm text-center text-white hover:underline"
+        >
           Sign out of Netflix
         </div>
       </div>
