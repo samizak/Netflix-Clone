@@ -1,7 +1,12 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import Navbar from "./components/Navbar";
+import Billboard from "./components/Billboard";
+import useMovieList from "@/hooks/useMovieList";
+import MovieList from "./components/MovieList";
+import useFavorites from "@/hooks/useFavourites";
 
 export default function Home() {
   const { data: session } = useSession({
@@ -11,13 +16,18 @@ export default function Home() {
     },
   });
 
+  const { data: movies = [] } = useMovieList();
+  const { data: favorites = [] } = useFavorites();
+
   return (
-    <main>
-      <h1 className="text-white">Netflix Clone</h1>
-      <p className="text-white">Logged in as: {session?.user?.name}</p>
-      <button className="w-full h-10 bg-white" onClick={() => signOut()}>
-        Logout
-      </button>
-    </main>
+    <>
+      <Navbar />
+      <Billboard />
+
+      <div className="pb-40">
+        <MovieList title="Trending Now" data={movies} />
+        <MovieList title="My List" data={favorites} />
+      </div>
+    </>
   );
 }
