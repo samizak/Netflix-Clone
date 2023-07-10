@@ -24,14 +24,18 @@ export default function Home() {
 
   return (
     <>
-      <InfoModal visible={isOpen} onClose={closeModal} />
-      <Navbar />
-      <Billboard />
+      {session && (
+        <div>
+          <InfoModal visible={isOpen} onClose={closeModal} />
+          <Navbar />
+          <Billboard />
 
-      <div className="pb-40">
-        <MovieList title="Trending Now" data={movies} />
-        <MovieList title="My List" data={favorites} />
-      </div>
+          <div className="pb-40">
+            <MovieList title="Trending Now" data={movies} />
+            <MovieList title="My List" data={favorites} />
+          </div>
+        </div>
+      )}
     </>
   );
 }
