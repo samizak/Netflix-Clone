@@ -4,10 +4,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavoriteButton";
 import { MovieInterface } from "../types/MovieInterface";
-
-// import { MovieInterface } from "@/types";
-// import FavoriteButton from "@/components/FavoriteButton";
-// import useInfoModalStore from "@/hooks/useInfoModalStore";
+import useInfoModal from "@/hooks/useInfoModal";
 
 interface MovieCardProps {
   data: MovieInterface;
@@ -15,7 +12,7 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   const router = useRouter();
-  //   const { openModal } = useInfoModalStore();
+  const { openModal } = useInfoModal();
 
   const redirectToWatch = useCallback(() => router.push(`/watch/${data.id}`), [router, data.id]);
 
@@ -47,7 +44,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             </div>
             <FavoriteButton movieId={data.id} />
             <div
-              //   onClick={() => openModal(data?.id)}
+              onClick={() => openModal(data?.id)}
               className="flex items-center justify-center w-6 h-6 ml-auto transition border-2 border-white rounded-full cursor-pointer group/item lg:w-10 lg:h-10 hover:border-neutral-300"
             >
               <ChevronDownIcon className="w-4 text-white group-hover/item:text-neutral-300 lg:w-6" />
