@@ -1,34 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fullstack Netflix Clone
 
-## Getting Started
+## Description
+A fullstack Netflix clone application created with NextJS, React, TailwindCSS and Prisma.
 
-First, run the development server:
+## Technologies
+* TypeScript
+* NextJS
+* React
+* Tailwind CSS
+* MongoDB
+* Prisma
+* NextAuth
+* Zustand
+* bcrypt
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Prerequisites
+
+**Node version 14.x**
+
+### Cloning the repository
+
+```shell
+git clone https://github.com/samizak/Netflix-Clone.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```shell
+npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Setup .env file
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+```js
+DATABASE_URL=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+NEXTAUTH_JWT_SECRET=
+NEXTAUTH_SECRET=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Start the app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```shell
+npm run dev
+```
 
-## Deploy on Vercel
+## Available commands
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Running commands with npm `npm run [command]`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| command         | description                              |
+| :-------------- | :--------------------------------------- |
+| `dev`           | Starts a development instance of the app |
+
+
+## Preview
+
+### Login Screen
+![Untitled3](https://github.com/samizak/Netflix-Clone/assets/30938455/697f4afe-c1b4-4b20-8f70-91d30be93e8c)
+
+### Main Billboard
+![Untitled](https://github.com/samizak/Netflix-Clone/assets/30938455/4c3e3a00-1445-4458-9bd7-f8bd239e80e6)
+
+![Untitled2](https://github.com/samizak/Netflix-Clone/assets/30938455/2acb0346-4cc0-417b-8073-8bc69f0eec8b)
+
+
+
