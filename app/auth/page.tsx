@@ -9,6 +9,8 @@ import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
+import Image from "next/image";
+
 export default function Auth() {
   // const router = useRouter();
 
@@ -54,7 +56,7 @@ export default function Auth() {
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="w-full h-full bg-black md:bg-opacity-50">
         <nav className="px-12 py-5">
-          <img src="./images/logo.png" alt="logo" className="h-12" />
+          <Image src="./images/logo.png" alt="logo" className="h-12" />
         </nav>
 
         <div className="flex justify-center">

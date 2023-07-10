@@ -5,6 +5,7 @@ import { PlayIcon } from "@heroicons/react/24/solid";
 import FavoriteButton from "./FavoriteButton";
 import { MovieInterface } from "../types/MovieInterface";
 import useInfoModal from "@/hooks/useInfoModal";
+import Image from "next/image";
 
 interface MovieCardProps {
   data: MovieInterface;
@@ -18,7 +19,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
-      <img
+      <Image
         onClick={redirectToWatch}
         src={data.thumbnailUrl}
         alt="Movie"
@@ -27,7 +28,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
       />
 
       <div className="opacity-0 absolute top-0 transition duration-300 z-10 invisible sm:visible w-full scale-50 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:opacity-100 delay-300">
-        <img
+        <Image
           onClick={redirectToWatch}
           src={data.thumbnailUrl}
           alt="Movie"
