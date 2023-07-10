@@ -61,7 +61,8 @@ Running commands with npm `npm run [command]`
 ## Preview
 
 ### Login Screen
-![Untitled3](https://github.com/samizak/Netflix-Clone/assets/30938455/697f4afe-c1b4-4b20-8f70-91d30be93e8c)
+![Untitled](https://github.com/samizak/Netflix-Clone/assets/30938455/0b809072-b978-4d79-8c0f-b04b4d0a7469)
+
 
 ### Main Billboard
 ![Untitled](https://github.com/samizak/Netflix-Clone/assets/30938455/4c3e3a00-1445-4458-9bd7-f8bd239e80e6)
