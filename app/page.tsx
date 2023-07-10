@@ -7,6 +7,8 @@ import Billboard from "./components/Billboard";
 import useMovieList from "@/hooks/useMovieList";
 import MovieList from "./components/MovieList";
 import useFavorites from "@/hooks/useFavourites";
+import InfoModal from "./components/InfoModel";
+import useInfoModal from "@/hooks/useInfoModal";
 
 export default function Home() {
   const { data: session } = useSession({
@@ -18,9 +20,11 @@ export default function Home() {
 
   const { data: movies = [] } = useMovieList();
   const { data: favorites = [] } = useFavorites();
+  const { isOpen, closeModal } = useInfoModal();
 
   return (
     <>
+      <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
       <Billboard />
 

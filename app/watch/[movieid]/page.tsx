@@ -10,9 +10,6 @@ const Watch = ({ params }: any) => {
   const { movieid: movieId } = params;
   const { data } = useMovie(movieId as string);
 
-  console.log(movieId);
-  console.log(data);
-
   return (
     <div className="w-screen h-screen bg-black">
       <nav className="fixed z-10 flex flex-row items-center w-full gap-8 p-4 bg-black bg-opacity-70">
@@ -21,7 +18,7 @@ const Watch = ({ params }: any) => {
           className="w-4 text-white transition cursor-pointer md:w-10 hover:opacity-80"
         />
 
-        <p className="font-bold text-white text-1xl md:text-3xl">
+        <p className="font-bold text-white select-none text-1xl md:text-3xl">
           <span className="font-light">Watching:</span> {data?.title}
         </p>
       </nav>
