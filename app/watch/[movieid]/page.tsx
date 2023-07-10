@@ -2,10 +2,18 @@
 
 import React from "react";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { useRouter, useSearchParams } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import useMovie from "@/hooks/useMovie";
+import { useSession } from "next-auth/react";
 
 const Watch = ({ params }: any) => {
+  const { data: session } = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect("/auth");
+    },
+  });
+
   const router = useRouter();
   const { movieid: movieId } = params;
   const { data } = useMovie(movieId as string);

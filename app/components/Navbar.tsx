@@ -37,7 +37,7 @@ export default function Navbar() {
           showBackground ? "bg-zinc-900/90" : ""
         }`}
       >
-        <Image className="h-4 lg:h-7" src="/images/logo.png" alt="logo" width="100" height="100" />
+        <Image className="w-auto h-4 lg:h-7" src="/images/logo.png" alt="logo" width="1000" height="1000" />
 
         <div className="flex-row hidden ml-8 gap-7 lg:flex">
           <NavbarItem label="Home" />

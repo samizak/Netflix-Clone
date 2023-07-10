@@ -1,12 +1,18 @@
+"use client";
+
 import React from "react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import useCurrentUser from "@/hooks/useCurrentUser";
 
 interface AccountMenuProps {
   visible?: boolean;
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+  const { data: currentUser } = useCurrentUser();
+
   if (!visible) return null;
 
   return (
@@ -15,7 +21,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
         <div className="flex flex-row items-center w-full gap-3 px-3 group/item">
           <Image className="w-8 rounded-md" src="/images/default-blue.png" alt="Profile" width="100" height="100" />
 
-          <p className="text-sm text-white group-hover/item:underline">Username</p>
+          <p className="text-sm text-white group-hover/item:underline">{currentUser?.name}</p>
         </div>
 
         <hr className="h-px my-4 bg-gray-600 border-0"></hr>
