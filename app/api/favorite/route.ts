@@ -9,7 +9,7 @@ import { authOptions } from "../auth/[...nextauth]/route";
 export async function POST(request: Request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session) return NextResponse.json({ message: "You are not logged in." });
+    if (!session) return NextResponse.json({ message: "You are not logged in." }, { status: 401 });
 
     const { movieId } = await request.json();
     const existingMovie = await prismadb.movie.findUnique({
@@ -34,15 +34,14 @@ export async function POST(request: Request) {
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
     console.error(error);
-    // return res.status(400).end();
-    return NextResponse.json({ message: "An Error occurred" }, { status: 400 });
+    return NextResponse.json({ message: "An Error occurred" }, { status: 500 });
   }
 }
 
 export async function DELETE(request: Request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session) return NextResponse.json({ message: "You are not logged in." });
+    if (!session) return NextResponse.json({ message: "You are not logged in." }, { status: 401 });
 
     const { movieId } = await request.json();
     const existingMovie = await prismadb.movie.findUnique({
@@ -72,7 +71,6 @@ export async function DELETE(request: Request) {
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
     console.error(error);
-    // return res.status(400).end();
-    return NextResponse.json({ message: "An Error occurred" }, { status: 400 });
+    return NextResponse.json({ message: "An Error occurred" }, { status: 500 });
   }
 }

@@ -6,7 +6,7 @@ import { authOptions } from "../auth/[...nextauth]/route";
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);
-    if (!session) return NextResponse.json({ message: "You are not logged in." });
+    if (!session) return NextResponse.json({ message: "You are not logged in." }, { status: 401 });
 
     const movieCount = await prismadb.movie.count();
     const randomIndex = Math.floor(Math.random() * movieCount);
@@ -19,7 +19,6 @@ export async function GET() {
     return NextResponse.json(randomMovies[0], { status: 200 });
   } catch (error) {
     console.error(error);
-    // return res.status(400).end();
-    return NextResponse.json({ message: "An Error occurred" }, { status: 400 });
+    return NextResponse.json({ message: "An Error occurred" }, { status: 500 });
   }
 }

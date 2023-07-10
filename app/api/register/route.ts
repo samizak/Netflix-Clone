@@ -10,10 +10,7 @@ export async function POST(request: Request) {
       where: { email },
     });
 
-    if (existingUser) {
-      // return res.status(422).json({ error: "Email taken" });
-      return NextResponse.json({ message: "Email taken" }, { status: 422 });
-    }
+    if (existingUser) return NextResponse.json({ message: "Email taken" }, { status: 422 });
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const user = await prismadb.user.create({
@@ -26,11 +23,9 @@ export async function POST(request: Request) {
       },
     });
 
-    // return res.status(200).json(user);
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
     console.error(error);
-    // return res.status(400).end();
-    return NextResponse.json({ message: "An Error occurred" }, { status: 400 });
+    return NextResponse.json({ message: "An Error occurred" }, { status: 500 });
   }
 }
