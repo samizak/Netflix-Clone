@@ -30,14 +30,15 @@ git clone https://github.com/samizak/Netflix-Clone.git
 ```
 
 ## 2. Install packages
-
 ```shell
 npm i
 ```
+Or if you prefer using Yarn:
+```shell
+yarn install
+```
 
 ## 3. Setup .env file
-
-
 ```js
 DATABASE_URL=
 GOOGLE_CLIENT_ID=
@@ -49,9 +50,12 @@ NEXTAUTH_SECRET=
 ```
 
 ## 4. Start the app
-
 ```shell
 npm run dev
+```
+Or if you prefer using Yarn:
+```shell
+yarn dev
 ```
 
 ## Available commands
