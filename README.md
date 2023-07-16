@@ -20,23 +20,22 @@ https://netflix-clone-neon-theta.vercel.app/auth
 * Axios
 * React-icons
 
-### Prerequisites
 
-**Node version 14.x**
+# Getting Started
 
-### Cloning the repository
+## 1. Cloning the repository
 
 ```shell
 git clone https://github.com/samizak/Netflix-Clone.git
 ```
 
-### Install packages
+## 2. Install packages
 
 ```shell
 npm i
 ```
 
-### Setup .env file
+## 3. Setup .env file
 
 
 ```js
@@ -49,7 +48,7 @@ NEXTAUTH_JWT_SECRET=
 NEXTAUTH_SECRET=
 ```
 
-### Start the app
+## 4. Start the app
 
 ```shell
 npm run dev
