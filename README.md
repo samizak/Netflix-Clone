@@ -15,7 +15,10 @@ https://netflix-clone-neon-theta.vercel.app/auth
 * Prisma
 * NextAuth
 * Zustand
-* bcrypt
+* Bcrypt
+* SWR
+* Axios
+* React-icons
 
 ### Prerequisites
 
