@@ -3,6 +3,9 @@
 ## Description
 A fullstack Netflix clone application created with NextJS, React, TailwindCSS and Prisma.
 
+## Live Preview
+https://netflix-clone-neon-theta.vercel.app/auth
+
 ## Technologies
 * TypeScript
 * NextJS
