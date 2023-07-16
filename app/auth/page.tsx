@@ -77,7 +77,7 @@ export default function Auth() {
 
             {variant === "login" && isError && (
               <div className="px-4 py-3 mb-4 text-sm text-white rounded-md bg-amber-600">
-                <p>Sorry, we can&quot;t find an account with this email address. Please try again or </p>
+                <p>Sorry, we can't find an account with this email address. Please try again or </p>
                 <span
                   className="underline cursor-pointer"
                   onClick={() => {
